@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!--import vue.js of development version-->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+	<title></title>
+</head>
+<body>
+	
+	<div id="app">
+		{{message}}
+	</div>
+	<div id="app-2" >
+		<!--用Vue綁定attribute of element-->
+		<!--這裡的「v-」稱作directive(指令)-->
+		<span v-bind:title="message">
+			Hover your mouse over me for a few seconds
+   			to see my dynamically bound title!
+		</span>
+	</div>
+	<div id="app-3">
+		<!--It’s easy to toggle the presence of an element, too-->
+		<!---當isVisible是false，整個span都會不見-->
+		<span v-if="isExist">
+			Now you see me
+		</span>
+	</div>
+	<div id="app-4">
+		<ol>
+			<!--Vue for loop-->
+			<!---->
+			<li v-for="todo in todos">
+				{{todo.text}}
+			</li>
+		</ol>
+	</div>
+	<div id="app-5">
+		<p>{{message}}</p>
+		<button v-on:click='ReverseMessage'>Reverse Message</button>
+	</div>
+	<!--Vue also provides the v-model directive that makes two-way 
+		binding between form input and app state a breeze-->
+	<div id='app-6'>
+		<p>{{message}}</p>
+		<input v-model='message'></input>
+	</div>
+	<div id='app-7'>
+		<!--用v-show，isVisible為false時，雖然畫面上不會顯示，但DOM仍存在，
+		只是style="display: none;"-->
+		<span v-show='isVisible'>
+			Now you see me 2
+		</span>
+	</div>
+	<!--import javascript written by myself-->
+	<!--這個一定要放最下面-->
+	<script src="index.js"></script>
+</body>
+</html>

@@ -80,3 +80,61 @@ var app7 = new Vue({
 		isVisible:false
 	}
 })
+
+var obj = {
+	foo:'bar'
+}
+//下面這個會讓obj變成read-only，無法修改值
+Object.freeze(obj)
+
+var app8 = new Vue({
+	el:'#app-8',
+	data:obj
+})
+
+var data = { a: 1 }
+var vm = new Vue({
+  el: '#example',
+  data: data
+})
+/*
+In addition to data properties, 
+Vue instances expose a number of useful instance properties and methods. 
+These are prefixed with $ to differentiate them from user-defined properties. 
+For example:
+
+vm.$data === data // => true
+vm.$el === document.getElementById('example') // => true
+
+// $watch is an instance method
+vm.$watch('a', function (newValue, oldValue) {
+  // This callback will be called when `vm.a` changes
+})
+*/
+
+vm.$watch('a', function (newValue, oldValue) {
+	// This callback will be called when `vm.a` changes
+	console.log('hello')
+  })
+
+//the created hook can be used to run code after an instance is created:
+  new Vue({
+	data: {
+	  a: 1
+	},
+	created: function () {
+	  // `this` points to the vm instance
+	  console.log('a is: ' + this.a)
+	}
+  })
+
+/*Javascript Array.prototype.map() & Arrow function expressions
+
+const array1 = [1, 4, 9, 16];
+
+// pass a function to map
+const map1 = array1.map(x => x * 2);
+
+console.log(map1);
+// expected output: Array [2, 8, 18, 32] 
+*/
